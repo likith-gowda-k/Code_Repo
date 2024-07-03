@@ -1,0 +1,80 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 50px;
+}
+
+.header{
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+}
+
+.header img{
+    margin: 5px;
+}
+
+/* navigation bar styling start here  */
+.nav_container > ul{
+    display: flex;
+    list-style-type: none;
+    background-color: #333;
+}
+
+.nav_container ul li a{
+    color: white;
+    text-decoration: none;
+}
+
+.nav_container ul li{
+    margin-right: 40px;
+}
+
+.nav_container ul li a:hover{
+    color: #333;
+    background-color: white;
+    text-decoration: none;
+}
+
+main{
+    background-color: rgb(230, 236, 236);
+    margin: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 3px solid gray;
+}
+
+.Home{
+    text-align: center;
+}
+
+form{
+    display: grid;
+   grid-template-columns: 50% 50%;
+}
+
+label, input, select{
+    margin-bottom: 10px;
+}
+
+.submit_button{
+    background-color: orange;
+    color: black;
+    cursor: pointer;
+}
+
+footer{
+    display: flex;
+    background-color: #333;
+}
+
+footer h1{
+    color: orange;
+}
+
+footer section{
+    border-right: 1px solid gray;
+}
