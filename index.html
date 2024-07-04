@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css\style.css">
+</head>
+<body>
+    <header class="header">
+        <img src="images\sample.png" alt="Logo" width="30px" height="30px"/>
+        <img src="images\sample.png" alt="UserProfile" width="30px" height="30px"/>
+    </header>
+
+    <div class="nav_container">
+        <ul>
+            <li>
+                <a href="#home">Home</a>
+            </li>
+            <li>
+                <a href="#about">About</a>
+            </li>
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+            <li>
+                <a href="#services">Services</a>
+            </li>
+        </ul>
+    </div>
+
+    <main>
+       <h1>Watches</h1>
+       <div class="watch-list" id="watch-list">
+
+        <div class="watch" id="watch1">
+            <img src="images\watch.jpg" alt="">
+            <p class="watch-name"> Watch Name: Casio1</p>
+            <p class="watch-model"> Watch model: C1</p>
+            <p class="watch-price">Price: 5000</p>
+        </div>
+
+        <div class="watch" id="watch2">
+            <img src="images\watch.jpg" alt="">
+            <p class="watch-name"> Watch Name: Casio1</p>
+            <p class="watch-model"> Watch model: C1</p>
+            <p class="watch-price">Price: 5000</p>
+        </div>
+
+
+
+        <div>
+            <button type="button" onclick=updateDetails()>Change Details</button>
+            <button type="button" onclick=addWatch()>Add Card</button>
+        </div>   
+    </div>
+
+    </main>
+
+    <footer>
+        <section class="about" id="About">
+          <h1>About Us!</h1>
+          <p>We are leading watch delivery service providers</p>
+        </section>
+    
+        <section class="contact" id="Contact">
+          <h1>Contact Us!</h1>
+          <p>#007 Full Address of our Office</p>
+          <p>Phone no. 0994946489</p>
+        </section>
+    
+        <section class="services" id="Services">
+          <h1>We Also provide</h1>
+          <p>Watch Shopping</p>
+          <p>Watch Service</p>
+          <p>Watch Replacement</p>
+          <p>Watch buyback</p>
+        </section>
+      </footer>
+      <script src="scripts/index.js" ></script>
+</body>
+</html>

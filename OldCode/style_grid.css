@@ -1,0 +1,7 @@
+.container{
+    grid-template-columns: 50px 50px 50px 50px 50px;
+}
+
+.item1{
+    background-color: blue;
+}
