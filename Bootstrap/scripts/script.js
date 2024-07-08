@@ -4,6 +4,7 @@ function add_watch(){
     // create card div
     const watch_card = document.createElement("div");
     watch_card.classList.add("card");
+    watch_card.style.width= "18rem";
 
    //create image tag
    const image_d = document.createElement("img");
