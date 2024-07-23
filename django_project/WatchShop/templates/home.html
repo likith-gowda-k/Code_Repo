@@ -37,12 +37,15 @@
 
     <div class="col">
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="{% static  'homepage/images/sample1.jpg' %}"" alt="Card image cap">
+            <img class="card-img-top" src="{{w_item.image.url}}" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">{{w_item.name}} </h5>
               <p class="card-text"> {{w_item.description}} </p>
               <p class="card-text"> {{w_item.price}} </p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <a href="{% url 'product' id=w_item.id %}" class="btn btn-primary">Visit Product</a>
+              <a href="{% url 'addtowish' id=w_item.id %}" class="btn btn-primary">+WishList</a>
+              <a href="{% url 'addtocart' id=w_item.id %}" class="btn btn-primary">+Cart</a>
+
             </div>
           </div>
       </div>

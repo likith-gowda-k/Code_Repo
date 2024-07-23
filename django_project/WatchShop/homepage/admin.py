@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Watches, WatchesUploads
+from . models import Watches, WatchesUploads, Wishlist, Cart
 
 # Register your models here.
 
@@ -16,3 +16,5 @@ class WatchUploadsAdmin(admin.ModelAdmin):
 
 
 admin.site.register(WatchesUploads, WatchUploadsAdmin)
+admin.site.register(Wishlist)
+admin.site.register(Cart)

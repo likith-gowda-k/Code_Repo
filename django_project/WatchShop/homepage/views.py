@@ -1,20 +1,20 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Watches
+from .models import WatchesUploads,Wishlist, Cart
 from .forms import UploadForm
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
 def Home(request):
-    watches = Watches.objects.all()
+    watches = WatchesUploads.objects.all()
     context = {'watches_t' : watches}
     return render(request, "home.html", context)
 
 def About(request):
     return render(request, "about.html")
 
-@login_required
+@login_required(login_url="/login")
 def Upload(request):
     if request.method == "POST":
         form = UploadForm(request.POST, request.FILES)
@@ -65,3 +65,42 @@ def signup_user(request):
 def logout_user(request):
     logout(request)
     return redirect('home')
+
+from django.shortcuts import get_object_or_404
+def show_product(request,id):
+    product = get_object_or_404(WatchesUploads, id=id)
+    return render(request, 'product.html', {'product': product})
+
+def addtowish(request,id):
+    user= request.user
+    product= WatchesUploads.objects.get(id=id)
+    obj1,created = Wishlist.objects.get_or_create(user=user)
+    obj1.products.add(product)
+    obj1.save()
+    return redirect('home')
+
+def addtocart(request,id):
+    user=request.user
+    product= WatchesUploads.objects.get(id=id)
+    obj1,created = Cart.objects.get_or_create(user=user)
+    obj1.save()
+    obj1.products.add(product)
+    obj1.save()
+    return redirect('home')
+
+@login_required(login_url="/login")
+def show_wishlist(request):
+    user = request.user
+    wish_object = Wishlist.objects.get(user=user)
+    return render(request, 'wishlist.html', {'user_products': wish_object.products.all()})
+
+@login_required(login_url="/login")
+def show_cart(request):
+    user = request.user
+    cart_object = Cart.objects.get(user=user)
+    return render(request, 'cart.html', {'cart_products': cart_object.products.all()})
+
+
+    
+
+
