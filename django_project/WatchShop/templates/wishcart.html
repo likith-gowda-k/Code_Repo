@@ -1,6 +1,6 @@
 {% extends 'main.html' %}
 
-{%block body_block %}  {% for item in cart_products %}
+{%block body_block %}  {% for item in user_products %}
 
 <div class="container mt-5">
     <div class="row">
@@ -11,6 +11,12 @@
             <h2>{{item.name}}</h2>
             <h3>Amount: Rs {{item.price}}</h3>
             <p class="product_description">{{item.description}}</p>
+
+            {% if isCart %}
+            <a href="{% url 'removecart' id=item.id %}" class='btn btn-primary'> Remove from Cart</a>
+            {% else %}
+            <a href="{% url 'removewish' id=item.id %}" class='btn btn-primary'> Remove from Wishlist</a>
+           {% endif %}
         </div>
     </div>
 </div>

@@ -21,14 +21,24 @@ class WatchesUploads(models.Model):
 
 
 class Wishlist(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     products = models.ManyToManyField(WatchesUploads)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
 
 class Cart(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     products = models.ManyToManyField(WatchesUploads)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+
+class WatchReview(models.Model):
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
+    product = models.ForeignKey(WatchesUploads, on_delete=models.CASCADE)
+    review_text = models.TextField()
+    rating = models.PositiveSmallIntegerField(choices= [(i,str(i)) for i in range(1,6)])
+
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

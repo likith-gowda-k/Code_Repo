@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import WatchesUploads,Wishlist, Cart
+from .models import WatchesUploads,Wishlist, Cart, WatchReview
 from .forms import UploadForm
 from django.contrib.auth.decorators import login_required
 
@@ -69,7 +69,8 @@ def logout_user(request):
 from django.shortcuts import get_object_or_404
 def show_product(request,id):
     product = get_object_or_404(WatchesUploads, id=id)
-    return render(request, 'product.html', {'product': product})
+    reviews_obj = WatchReview.objects.filter(product=product)
+    return render(request, 'product.html', {'product': product, 'reviews': reviews_obj})
 
 def addtowish(request,id):
     user= request.user
@@ -92,13 +93,30 @@ def addtocart(request,id):
 def show_wishlist(request):
     user = request.user
     wish_object = Wishlist.objects.get(user=user)
-    return render(request, 'wishlist.html', {'user_products': wish_object.products.all()})
+    return render(request, 'wishcart.html', {'user_products': wish_object.products.all()})
 
 @login_required(login_url="/login")
 def show_cart(request):
     user = request.user
     cart_object = Cart.objects.get(user=user)
-    return render(request, 'cart.html', {'cart_products': cart_object.products.all()})
+    return render(request, 'wishcart.html', {'user_products': cart_object.products.all(), "isCart": True})
+
+
+def removewish(request,id):
+    product_rm = WatchesUploads.objects.get(id=id)
+
+    wish_obj= Wishlist.objects.get(user=request.user)
+    wish_obj.products.remove(product_rm)
+    return render(request, 'wishcart.html', {'user_products': wish_obj.products.all()})
+
+
+def removecart(request,id):
+    product_rm = WatchesUploads.objects.get(id=id)
+
+    cart_obj= Cart.objects.get(user=request.user)
+    cart_obj.products.remove(product_rm)
+    return render(request, 'wishcart.html', {'user_products': cart_obj.products.all()})
+    
 
 
     
