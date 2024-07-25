@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Watches, WatchesUploads, Wishlist, Cart, WatchReview
+from . models import Watches, WatchesUploads, Wishlist, Cart, WatchReview, CartItem
 
 # Register your models here.
 
@@ -8,10 +8,10 @@ admin.site.register(Watches)
 
 #WatchUploads
 class WatchUploadsAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description', 'price', 'image')
+    list_display = ('name', 'description', 'price', 'image', 'count')
     list_filter = ('name', 'price')
     search_fields= ('name', 'description')
-    fields=  ['name', 'description', 'price', 'image']
+    fields=  ['name', 'description', 'price', 'image', 'count']
 admin.site.register(WatchesUploads, WatchUploadsAdmin)
 
 #WishList
@@ -23,6 +23,7 @@ admin.site.register(Wishlist)
 
 
 admin.site.register(Cart)
+admin.site.register(CartItem)
 
 #Watch Review
 class WatchReviewAdmin(admin.ModelAdmin):
