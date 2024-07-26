@@ -14,6 +14,8 @@ def Home(request):
 def About(request):
     return render(request, "about.html")
 
+
+#function based view
 @login_required(login_url="/login")
 def Upload(request):
     if request.method == "POST":
@@ -25,6 +27,27 @@ def Upload(request):
         form = UploadForm()
 
     return render(request, "WatchUpload.html", {'form': form})
+
+#class based view
+
+from django.views import View
+from django.utils.decorators import method_decorator
+
+class UploadClass(View):
+
+    @method_decorator(login_required)
+    def get(request):
+        form = UploadForm()
+        return render(request, "WatchUpload.html", {'form': form})
+    
+    @method_decorator(login_required)
+    def post(request):
+        form = UploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+        return render(request, "WatchUpload.html", {'form': form})
+
 
 
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
