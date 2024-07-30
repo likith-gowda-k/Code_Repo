@@ -17,7 +17,8 @@ urlpatterns = [
     path('wishlist', views.show_wishlist, name= 'show_wishlist'),
     path('cart', views.show_cart, name='show_cart'),
     path('removewish/<int:id>', views.removewish, name="removewish"),
-    path('removecart/<int:id>', views.removecart, name="removecart")
+    path('removecart/<int:id>', views.removecart, name="removecart"),
+    path('dummy', views.show_data, name= 'dummy')
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
