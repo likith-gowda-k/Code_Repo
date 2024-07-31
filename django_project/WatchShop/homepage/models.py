@@ -22,7 +22,7 @@ class WatchesUploads(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
-        return f"{self.name}" 
+        return f"{self.name} _ {self.price}" 
 
 
 class Wishlist(models.Model):

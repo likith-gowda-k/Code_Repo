@@ -1,0 +1,35 @@
+# Installation Part
+$ python -m pip install django-extensions
+$ python -m pip install notebook==6.5.6
+
+#add installed extensions to installedApps in settings.py
+INSTALLED_APPS = [
+    +
+    'django_extensions',
+]
+
+
+#Run below commands for shell_plus notebook
+$ mkdir notebooks
+$ cd notebooks
+
+$ python -m ..\manage.py shell_plus --notebook  
+
+
+[
+If the above command gives error:
+1. $ winget install python.python.3.11
+2. pip install all package using:- $ py -3.11 -m pip install <package-name>
+3. $ py -3.11  ..\manage.py shell_plus --notebook
+]
+
+
+#New -> Django Shell Plus
+
+#setup notebook
+
+import django
+import os
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'rest.settings')
+os.environ['DJANGO_ALLOW_ASYNC_UNSAFE'] = 'true'
+django.setup()
