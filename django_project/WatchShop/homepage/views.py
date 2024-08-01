@@ -149,9 +149,9 @@ def show_cart(request):
 def removecart(request,id):
     product_rm = WatchesUploads.objects.get(id=id)
 
-    cart_obj= Cart.objects.get(user=request.user)
-    cart_obj.products.remove(product_rm)
-    return render(request, 'cart.html', {'user_products': cart_obj.products.all()})
+    cart_obj= CartItem.objects.get(user=request.user)
+    cart_obj.product.remove(product_rm)
+    return render(request, 'cart.html', {'user_products': cart_obj.product.all()})
 
 
 from django.http import JsonResponse

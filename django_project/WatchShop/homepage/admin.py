@@ -8,10 +8,10 @@ admin.site.register(Watches)
 
 #WatchUploads
 class WatchUploadsAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description', 'price', 'image', 'count')
+    list_display = ('id','name', 'description', 'price', 'image', 'count')
     list_filter = ('name', 'price')
     search_fields= ('name', 'description')
-    fields=  ['name', 'description', 'price', 'image', 'count']
+    fields=  ['id', 'name', 'description', 'price', 'image', 'count']
 admin.site.register(WatchesUploads, WatchUploadsAdmin)
 
 #WishList
